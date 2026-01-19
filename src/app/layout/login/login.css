@@ -1,0 +1,56 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 24px;
+  
+  mat-card-header {
+    margin-bottom: 24px;
+    text-align: center;
+    display: block;
+    
+    mat-card-title {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+  }
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 24px 0;
+  font-size: 16px;
+  margin-top: 16px;
+}
+
+.footer-actions {
+  text-align: center;
+  margin-top: 24px;
+  padding-bottom: 16px;
+
+  p {
+    color: var(--mat-sys-on-surface-variant);
+  }
+
+  .signup-link {
+    color: var(--mat-sys-primary);
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
