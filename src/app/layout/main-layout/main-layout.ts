@@ -12,6 +12,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'app-main-layout',
@@ -27,7 +29,8 @@ import { toSignal } from '@angular/core/rxjs-interop';
     MatIconModule,
     MatButtonModule,
     MatTooltipModule,
-
+    MatMenuModule,
+    MatDividerModule
   ],
   templateUrl: './main-layout.html',
   styleUrls: ['./main-layout.css']
@@ -44,4 +47,9 @@ export class MainLayout {
   );
 
   isExpanded = signal(true);
+
+  onLogout() {
+    localStorage.removeItem('authToken');
+    window.location.href = '/login';
+  }
 }

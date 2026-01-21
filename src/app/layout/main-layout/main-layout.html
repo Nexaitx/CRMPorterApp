@@ -1,56 +1,79 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" 
-               [class.collapsed]="!isExpanded() && !isHandset()"
-               [mode]="isHandset() ? 'over' : 'side'" 
-               [opened]="isHandset() ? false : true"
-               disableClose="true">
+    <mat-sidenav #drawer class="sidenav" [class.collapsed]="!isExpanded() && !isHandset()"
+        [mode]="isHandset() ? 'over' : 'side'" [opened]="isHandset() ? false : true" disableClose="true">
 
-    <mat-toolbar class="sidebar-header">
-      <mat-icon *ngIf="!isExpanded() && !isHandset()">delivery_dining</mat-icon>
-      <span *ngIf="isExpanded() || isHandset()">Porter CRM</span>
-    </mat-toolbar>
+        <mat-toolbar class="sidebar-header">
+            <mat-icon *ngIf="!isExpanded() && !isHandset()">delivery_dining</mat-icon>
+            <span *ngIf="isExpanded() || isHandset()">Porter CRM</span>
+        </mat-toolbar>
 
-    <mat-nav-list>
-      <a mat-list-item routerLink="/dashboard" routerLinkActive="active-link"
-         [matTooltip]="(!isExpanded() && !isHandset()) ? 'Dashboard' : ''" matTooltipPosition="right">
-        <mat-icon matListItemIcon>dashboard</mat-icon>
-        <span matListItemTitle *ngIf="isExpanded() || isHandset()">Dashboard</span>
-      </a>
+        <mat-nav-list>
+            <a mat-list-item routerLink="/dashboard" routerLinkActive="active-link"
+                [matTooltip]="(!isExpanded() && !isHandset()) ? 'Dashboard' : ''" matTooltipPosition="right">
+                <mat-icon matListItemIcon>dashboard</mat-icon>
+                <span matListItemTitle *ngIf="isExpanded() || isHandset()">Dashboard</span>
+            </a>
 
-      <a mat-list-item routerLink="/logistics-admin" routerLinkActive="active-link"
-         [matTooltip]="(!isExpanded() && !isHandset()) ? 'Logistics Admin' : ''" matTooltipPosition="right">
-        <mat-icon matListItemIcon>local_shipping</mat-icon>
-        <span matListItemTitle *ngIf="isExpanded() || isHandset()">Logistics Admin</span>
-      </a>
+            <a mat-list-item routerLink="/logistics-admin" routerLinkActive="active-link"
+                [matTooltip]="(!isExpanded() && !isHandset()) ? 'Logistics Admin' : ''" matTooltipPosition="right">
+                <mat-icon matListItemIcon>local_shipping</mat-icon>
+                <span matListItemTitle *ngIf="isExpanded() || isHandset()">Logistics Admin</span>
+            </a>
 
-      <a mat-list-item routerLink="/profile" routerLinkActive="active-link"
-         [matTooltip]="(!isExpanded() && !isHandset()) ? 'Profile' : ''" matTooltipPosition="right">
-        <mat-icon matListItemIcon>person</mat-icon>
-        <span matListItemTitle *ngIf="isExpanded() || isHandset()">Profile</span>
-      </a>
+            <a mat-list-item routerLink="/profile" routerLinkActive="active-link"
+                [matTooltip]="(!isExpanded() && !isHandset()) ? 'Profile' : ''" matTooltipPosition="right">
+                <mat-icon matListItemIcon>person</mat-icon>
+                <span matListItemTitle *ngIf="isExpanded() || isHandset()">Profile</span>
+            </a>
 
-      <a mat-list-item routerLink="/settings" routerLinkActive="active-link"
-         [matTooltip]="(!isExpanded() && !isHandset()) ? 'Settings' : ''" matTooltipPosition="right">
-        <mat-icon matListItemIcon>settings</mat-icon>
-        <span matListItemTitle *ngIf="isExpanded() || isHandset()">Settings</span>
-      </a>
-    </mat-nav-list>
-  </mat-sidenav>
+            <a mat-list-item routerLink="/settings" routerLinkActive="active-link"
+                [matTooltip]="(!isExpanded() && !isHandset()) ? 'Settings' : ''" matTooltipPosition="right">
+                <mat-icon matListItemIcon>settings</mat-icon>
+                <span matListItemTitle *ngIf="isExpanded() || isHandset()">Settings</span>
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
 
-  <mat-sidenav-content [class.content-collapsed]="!isExpanded() && !isHandset()" 
-                       [class.content-expanded]="isExpanded() && !isHandset()">
-    <mat-toolbar color="primary">
-      <button type="button" mat-icon-button 
-              (click)="isHandset() ? drawer.toggle() : isExpanded.set(!isExpanded())">
-        <mat-icon>{{ isExpanded() || isHandset() ? 'menu_open' : 'menu' }}</mat-icon>
-      </button>
-      <span>Welcome Admin</span>
-      <span class="spacer"></span>
-      <button mat-icon-button><mat-icon>notifications</mat-icon></button>
-    </mat-toolbar>
+    <mat-sidenav-content [class.content-collapsed]="!isExpanded() && !isHandset()"
+        [class.content-expanded]="isExpanded() && !isHandset()">
+        <mat-toolbar color="primary">
+            <button type="button" mat-icon-button
+                (click)="isHandset() ? drawer.toggle() : isExpanded.set(!isExpanded())">
+                <mat-icon>{{ isExpanded() || isHandset() ? 'menu_open' : 'menu' }}</mat-icon>
+            </button>
+            <span>Welcome Admin</span>
+            <span class="spacer"></span>
+            <button mat-icon-button><mat-icon>notifications</mat-icon></button>
 
-    <div class="content-padding">
-      <router-outlet></router-outlet>
-    </div>
-  </mat-sidenav-content>
+            <button mat-icon-button [matMenuTriggerFor]="profileMenu">
+                <mat-icon>account_circle</mat-icon>
+            </button>
+
+            <mat-menu #profileMenu="matMenu" class="profile-dropdown">
+                <div class="profile-header px-3 py-2 d-flex align-items-center border-bottom">
+                    <img src="../../../assets/admin-avatar.jpg" alt="Profile" class="rounded-circle me-3"
+                        style="width: 50px; height: 50px;">
+
+                    <div class="profile-info d-flex flex-column">
+                        <span class="fw-bold text-dark">John Doe</span>
+                        <small class="text-muted">Senior Porter Admin</small>
+                    </div>
+                </div>
+
+                <button mat-menu-item routerLink="/profile">
+                    <mat-icon>person</mat-icon>
+                    <span>My Profile</span>
+                </button>
+
+                <button mat-menu-item (click)="onLogout()">
+                    <mat-icon>logout</mat-icon>
+                    <span>Logout</span>
+                </button>
+            </mat-menu>
+        </mat-toolbar>
+
+        <div class="content-padding">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
 </mat-sidenav-container>
