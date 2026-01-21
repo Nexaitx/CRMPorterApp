@@ -1,0 +1,37 @@
+.navbar {
+  transition: all 0.3s ease;
+  .navbar-brand {
+    letter-spacing: -0.5px;
+  }
+}
+
+.hero-section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.card {
+  transition: transform 0.2s ease-in-out;
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+/* $primary-color: #2563eb;  */
+
+.btn-primary {
+  background-color: #fe285f;
+  border-color: #fe285f;
+  &:hover {
+    background-color: #e01e4a;
+    border-color: #e01e4a;
+  }
+}
+
+.text-primary {
+  color: #fe285f !important;
+}
+
+.bg-primary {
+  background-color: #fe285f !important;
+}

@@ -1,1 +1,63 @@
-<p>profile works!</p>
+<div class="profile-wrapper">
+  <div class="profile-card header-section">
+    <div class="avatar-group">
+      <div class="avatar-circle">AJ</div>
+      <div class="info">
+        <h1>{{ porter().name }} <span class="badge active">{{ porter().status }}</span></h1>
+        <p>ID: {{ porter().id }} • Joined {{ porter().joinedDate }}</p>
+      </div>
+    </div>
+    <div class="actions">
+      <button matButton="outlined" (click)="toggleEdit()">
+        {{ isEditing() ? 'Save Changes' : 'Edit Profile' }}
+      </button>
+      <button matButton="filled" class="ms-2">Suspend Porter</button>
+    </div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <label>Average Rating</label>
+      <div class="value">⭐ {{ porter().rating }}</div>
+    </div>
+    <div class="stat-card">
+      <label>Total Trips</label>
+      <div class="value">{{ porter().trips }}</div>
+    </div>
+    <div class="stat-card">
+      <label>Wallet Balance</label>
+      <div class="value">${{ porter().walletBalance }}</div>
+    </div>
+  </div>
+
+  <div class="details-grid">
+    <div class="profile-card">
+      <h3>Vehicle Information</h3>
+      <hr>
+      <div class="info-row">
+        <span>Assigned Vehicle:</span>
+        <strong>{{ porter().vehicle }}</strong>
+      </div>
+      <div class="info-row">
+        <span>Insurance Status:</span>
+        <strong class="text-success">Verified</strong>
+      </div>
+      <div class="info-row">
+        <span>License Plate:</span>
+        <strong>XYZ-1234</strong>
+      </div>
+    </div>
+
+    <div class="profile-card">
+      <h3>Recent Performance</h3>
+      <div class="metric">
+        <label>On-Time Delivery (94%)</label>
+        <div class="progress-bar"><div class="fill" style="width: 94%"></div></div>
+      </div>
+      <div class="metric">
+        <label>Customer Satisfaction (88%)</label>
+        <div class="progress-bar"><div class="fill" style="width: 88%"></div></div>
+      </div>
+    </div>
+  </div>
+</div>

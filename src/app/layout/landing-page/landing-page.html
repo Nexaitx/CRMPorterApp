@@ -1,0 +1,195 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top py-3">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <div class="bg-primary text-white rounded px-2 py-1 me-2 fw-bold">P</div>
+      <span class="fw-bold text-dark">Porter<span class="text-primary">CRM</span></span>
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link px-3" href="#features">Features</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="#solutions">Solutions</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="#pricing">Pricing</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-2">
+        <button class="btn btn-link text-decoration-none text-secondary" routerLink="/login">Login</button>
+        <button class="btn btn-primary px-4 shadow-sm" routerLink="/signup">Sign Up Free</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <section class="py-5 border-bottom bg-light">
+    <div class="container py-5">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <h1 class="display-4 fw-bold text-dark mb-4">
+            Manage Your Logistics <span class="text-primary">Without the Chaos.</span>
+          </h1>
+          <p class="lead text-muted mb-4">
+            The ultimate admin panel for Porter services. Track real-time deliveries, manage your fleet performance, and scale your operations with data-driven insights.
+          </p>
+          <div class="d-grid d-md-flex justify-content-md-start gap-3">
+            <button type="button" class="btn btn-primary btn-lg px-4">Get Started</button>
+            <button type="button" class="btn btn-outline-secondary btn-lg px-4">View Demo</button>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card border-0 shadow-lg overflow-hidden">
+            <img src="https://via.placeholder.com/600x400/2563eb/ffffff?text=Porter+Dashboard+Preview" class="img-fluid" alt="CRM Dashboard">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="solutions" class="py-5">
+    <div class="container py-5">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">Everything you need to manage your fleet</h2>
+        <p class="text-muted">Powerful tools designed specifically for logistics administration.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 p-4 border-0 bg-light shadow-sm">
+            <div class="mb-3 text-primary fs-1">🚚</div>
+            <h4 class="fw-bold">Fleet Tracking</h4>
+            <p class="text-muted">Real-time GPS tracking for every vehicle in your network with live status updates.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 p-4 border-0 bg-light shadow-sm">
+            <div class="mb-3 text-primary fs-1">👤</div>
+            <h4 class="fw-bold">Driver Management</h4>
+            <p class="text-muted">Manage documentation, performance ratings, and payouts for all your drivers in one place.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 p-4 border-0 bg-light shadow-sm">
+            <div class="mb-3 text-primary fs-1">📈</div>
+            <h4 class="fw-bold">Instant Analytics</h4>
+            <p class="text-muted">Visualize delivery trends, revenue growth, and operational bottlenecks with ease.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="features" class="py-5 bg-white">
+  <div class="container py-5">
+    <div class="row align-items-center mb-5">
+      <div class="col-lg-6">
+        <h2 class="fw-bold mb-4">Powerful Features to Drive Efficiency</h2>
+        <div class="d-flex mb-4">
+          <div class="flex-shrink-0">
+            <i class="bi bi-check-circle-fill text-primary fs-4"></i>
+          </div>
+          <div class="ms-3">
+            <h5 class="fw-bold">Automated Dispatching</h5>
+            <p class="text-muted">Smart algorithms assign the nearest porter to a request, reducing wait times by 30%.</p>
+          </div>
+        </div>
+        <div class="d-flex mb-4">
+          <div class="flex-shrink-0">
+            <i class="bi bi-check-circle-fill text-primary fs-4"></i>
+          </div>
+          <div class="ms-3">
+            <h5 class="fw-bold">Digital Proof of Delivery</h5>
+            <p class="text-muted">Capture signatures and photos directly within the app for instant verification.</p>
+          </div>
+        </div>
+        <div class="d-flex">
+          <div class="flex-shrink-0">
+            <i class="bi bi-check-circle-fill text-primary fs-4"></i>
+          </div>
+          <div class="ms-3">
+            <h5 class="fw-bold">Inventory Management</h5>
+            <p class="text-muted">Keep track of items in transit with integrated barcode and QR scanning support.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 text-center">
+        <img src="https://via.placeholder.com/500x350/f8f9fa/2563eb?text=Mobile+Driver+App" class="img-fluid rounded shadow" alt="Feature Graphic">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="py-5 bg-light">
+  <div class="container py-5">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold">Simple, Transparent Pricing</h2>
+      <p class="text-muted">Choose the plan that fits your fleet size.</p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body p-5">
+            <h5 class="text-uppercase text-muted fw-bold small">Starter</h5>
+            <h2 class="fw-bold mb-4">$49<span class="fs-6 fw-normal text-muted">/mo</span></h2>
+            <ul class="list-unstyled mb-5">
+              <li class="mb-3"><i class="bi bi-check text-primary me-2"></i>Up to 5 Vehicles</li>
+              <li class="mb-3"><i class="bi bi-check text-primary me-2"></i>Live GPS Tracking</li>
+              <li class="mb-3"><i class="bi bi-check text-primary me-2"></i>Email Support</li>
+              <li class="mb-3 text-muted text-decoration-line-through"><i class="bi bi-x me-2"></i>Advanced Analytics</li>
+            </ul>
+            <button class="btn btn-outline-primary w-100 py-2">Get Started</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100 border-primary shadow-lg position-relative">
+          <span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-primary">Most Popular</span>
+          <div class="card-body p-5">
+            <h5 class="text-uppercase text-primary fw-bold small">Professional</h5>
+            <h2 class="fw-bold mb-4">$129<span class="fs-6 fw-normal text-muted">/mo</span></h2>
+            <ul class="list-unstyled mb-5">
+              <li class="mb-3"><i class="bi bi-check text-primary me-2"></i>Up to 25 Vehicles</li>
+              <li class="mb-3"><i class="bi bi-check text-primary me-2"></i>Live GPS Tracking</li>
+              <li class="mb-3"><i class="bi bi-check text-primary me-2"></i>24/7 Priority Support</li>
+              <li class="mb-3"><i class="bi bi-check text-primary me-2"></i>Advanced Analytics</li>
+            </ul>
+            <button class="btn btn-primary w-100 py-2">Start Free Trial</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body p-5">
+            <h5 class="text-uppercase text-muted fw-bold small">Enterprise</h5>
+            <h2 class="fw-bold mb-4">Custom</h2>
+            <ul class="list-unstyled mb-5">
+              <li class="mb-3"><i class="bi bi-check text-primary me-2"></i>Unlimited Vehicles</li>
+              <li class="mb-3"><i class="bi bi-check text-primary me-2"></i>Custom Integrations</li>
+              <li class="mb-3"><i class="bi bi-check text-primary me-2"></i>Dedicated Manager</li>
+              <li class="mb-3"><i class="bi bi-check text-primary me-2"></i>White-labeling</li>
+            </ul>
+            <button class="btn btn-outline-dark w-100 py-2">Contact Sales</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="bg-dark text-white py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h5 class="fw-bold mb-3">PorterCRM</h5>
+        <p class="small text-muted">Empowering logistics businesses through smart management tools.</p>
+      </div>
+      <div class="col-md-6 text-md-end">
+        <p class="small text-muted">&copy; 2026 Porter CRM. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>

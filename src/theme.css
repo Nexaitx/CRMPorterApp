@@ -4,7 +4,7 @@ html {
   color-scheme: light;
 
   /* Primary palette variables */
-  --mat-sys-primary: light-dark(#fa588a, #ffb1c5);
+  --mat-sys-primary: light-dark(#f46696, #ffb1c5);
   --mat-sys-on-primary: light-dark(#ffffff, #65002f);
   --mat-sys-primary-container: light-dark(#ffd9e1, #8f0045);
   --mat-sys-on-primary-container: light-dark(#3f001a, #ffd9e1);
@@ -63,7 +63,7 @@ html {
 
   /* Neutral variant palette variables */
   --mat-sys-surface-variant: light-dark(#ffd9e1, #5b3f46);
-  --mat-sys-on-surface-variant: light-dark(#5b3f46, #e3bdc5);
+  --mat-sys-on-surface-variant: light-dark(#50484a, #e3bdc5);
   --mat-sys-neutral-variant20: light-dark(#422930, #422930); /* Variable used for the sidenav scrim (container background shadow when opened) */
 
   /* TYPOGRAPHY SYSTEM VARIABLES */

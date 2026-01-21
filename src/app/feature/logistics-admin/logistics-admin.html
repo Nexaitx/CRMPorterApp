@@ -1,0 +1,112 @@
+<div class="settings-container">
+  <aside class="settings-sidebar">
+    <h3>Porter Admin</h3>
+    <nav>
+      <button (click)="activeModule.set('city-onboarding')" [class.active]="activeModule() === 'city-onboarding'">🏙️
+        City Onboarding</button>
+      <button (click)="activeModule.set('pricing')" [class.active]="activeModule() === 'pricing'">💰 Pricing &
+        SLA</button>
+      <button (click)="activeModule.set('kyc')" [class.active]="activeModule() === 'kyc'">🆔 Rider KYC</button>
+      <button (click)="activeModule.set('payouts')" [class.active]="activeModule() === 'payouts'">🏦 Payouts</button>
+      <button (click)="activeModule.set('override')" [class.active]="activeModule() === 'override'">⚠️
+        Overrides</button>
+    </nav>
+  </aside>
+
+  <main class="settings-content">
+
+    @if (activeModule() === 'city-onboarding') {
+    <section class="settings-card">
+      <h3>City Onboarding & Geofencing</h3>
+      <div class="onboarding-grid">
+        <div class="map-placeholder"> [Interactive Map: Draw Polygon Boundaries] </div>
+        <div class="d-flex gap-2 mt-3">
+          <input type="text" class="form-control" placeholder="City Name">
+          <select class="form-select">
+            <option>Select Region</option>
+          </select>
+          <button matButton="filled" color="primary" class="px-2 w-50">Initialize&nbsp;City</button>
+        </div>
+      </div>
+    </section>
+    }
+
+    @if (activeModule() === 'pricing') {
+    <div class="grid-2">
+      <section class="border-end pe-2">
+        <h3>Distance/Time Rules</h3>
+        <div class="input-row"><span>Base Fare</span> <input type="number" [(ngModel)]="pricing().base"></div>
+        <div class="input-row"><span>Per KM</span> <input type="number" [(ngModel)]="pricing().perKm"></div>
+        <div class="input-row"><span>Per Min</span> <input type="number" [(ngModel)]="pricing().perMin"></div>
+      </section>
+
+      <section>
+        <h3>SLA & Penalty Rules</h3>
+        <table>
+          @for (rule of penaltyRules(); track rule.trigger) {
+          <tr>
+            <td>{{ rule.trigger }}</td>
+            <td class="text-danger">-${{ rule.penalty }}</td>
+          </tr>
+          }
+        </table>
+      </section>
+    </div>
+    }
+
+    @if (activeModule() === 'kyc') {
+    <section>
+      <h3>Rider Verification Queue</h3>
+      <div class="kyc-list">
+        @for (rider of pendingRiders(); track rider.id) {
+        <div class="kyc-item">
+          <span><strong>{{ rider.name }}</strong> ({{ rider.id }})</span>
+          <span class="status-badge">{{ rider.docs }}</span>
+          <div class="actions">
+            <button matButton="outlined" color="primary">View Docs</button>
+            <button matButton="filled" class="ms-2" color="success">Approve</button>
+          </div>
+        </div>
+        }
+      </div>
+    </section>
+    }
+
+    @if (activeModule() === 'payouts') {
+    <section>
+      <h3>Weekly Settlement</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Rider</th>
+            <th>Earnings</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (p of payouts(); track p.rider) {
+          <tr>
+            <td>{{ p.rider }}</td>
+            <td>{{ p.total | currency }}</td>
+            <td>{{ p.status }}</td>
+            <td><button matButton="outlined">Generate Invoice</button></td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </section>
+    }
+
+    @if (activeModule() === 'override') {
+    <section>
+      <h3>Manual Override (Exceptions Only)</h3>
+      <p>This allows force-completing or canceling orders. <b class="text-success">Logged for Audit.</b></p>
+      <input type="text" class="form-control" placeholder="Enter Order ID">
+      <textarea class="form-control my-2" placeholder="Reason for exception..."></textarea>
+      <button matButton="filled" color="danger">Execute Override</button>
+    </section>
+    }
+
+  </main>
+</div>

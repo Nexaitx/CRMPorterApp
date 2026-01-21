@@ -1,1 +1,71 @@
-<p>settings works!</p>
+<div class="settings-container">
+  <aside class="settings-sidebar">
+    <h3>Settings</h3>
+    <nav>
+      @for (item of sections; track item.id) {
+        <button 
+          [class.active]="activeSection() === item.id"
+          (click)="setSection(item.id)">
+          <span class="icon">{{ item.icon }}</span> {{ item.label }}
+        </button>
+      }
+    </nav>
+  </aside>
+
+  <main class="settings-content">
+    @if (activeSection() === 'general') {
+      <section class="settings-card">
+        <h3>Platform Configuration</h3>
+        <div class="form-group">
+          <label>Company Name</label>
+          <input type="text" value="Porter Express Logistics">
+        </div>
+        <div class="form-group">
+          <label>Measurement Unit</label>
+          <select>
+            <option>Metric (Kilometers)</option>
+            <option>Imperial (Miles)</option>
+          </select>
+        </div>
+      </section>
+    }
+
+    @if (activeSection() === 'dispatch') {
+      <section class="settings-card">
+        <h3>Dispatching Logic</h3>
+        <div class="toggle-row">
+          <div>
+            <strong>Auto-Assign Nearest Porter</strong>
+            <p>Automatically assign orders to the closest available driver.</p>
+          </div>
+          <input type="checkbox" [checked]="autoAssign()" (change)="autoAssign.set(!autoAssign())">
+        </div>
+        <div class="form-group">
+          <label>Search Radius (km)</label>
+          <input type="range" min="1" max="50" [value]="maxRadius()" 
+                 (input)="maxRadius.set(+$any($event.target).value)">
+          <span class="range-value">{{ maxRadius() }} km</span>
+        </div>
+      </section>
+    }
+
+    @if (activeSection() === 'pricing') {
+      <section class="settings-card">
+        <h3>Base Pricing Structure</h3>
+        <div class="form-group">
+          <label>Base Delivery Fee ($)</label>
+          <input type="number" [value]="baseFare()" (input)="baseFare.set(+$any($event.target).value)">
+        </div>
+        <div class="form-group">
+          <label>Surge Multiplier (Peak Hours)</label>
+          <input type="number" step="0.1" value="1.2">
+        </div>
+      </section>
+    }
+
+    <div class="footer-actions">
+      <button matButton="filled" color="primary">Save Changes</button>
+      <button matButton="tonal" class="ms-2">Reset to Defaults</button>
+    </div>
+  </main>
+</div>

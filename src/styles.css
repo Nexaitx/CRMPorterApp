@@ -1,3 +1,74 @@
 /* You can add global styles to this file, and also import other style files */
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: lighter
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    color: #1e293b;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.settings-container {
+    display: flex;
+    background: white;
+    min-height: 80vh;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.settings-sidebar {
+    width: 260px;
+    background: #f8fafc;
+    padding: 1rem;
+}
+
+.settings-sidebar button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    color: #64748b;
+    transition: all 0.2s;
+}
+
+.settings-sidebar button.active {
+    background: #8b1d4a;
+    color: white;
+}
+
+.settings-content {
+  flex: 1;
+  padding: 1rem;
+}
+
+.settings-card {
+  max-width: 600px;
+  margin-bottom: 2rem;
+}

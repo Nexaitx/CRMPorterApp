@@ -1,1 +1,38 @@
-<p>dashboard works!</p>
+<div class="dashboard-container">
+    <header>
+        <h1>Logistics Command Center</h1>
+        <p>Real-time oversight of Porter operations</p>
+    </header>
+
+    <div class="stats-grid">
+        <div class="card">
+            <span>Active Porters</span>
+            <h2>{{ activeDrivers() }}</h2>
+            <small class="trend-up">↑ 12% vs last week</small>
+        </div>
+        <div class="card">
+            <span>Pending Pickups</span>
+            <h2>{{ pendingOrders() }}</h2>
+        </div>
+        <div class="card primary">
+            <span>Revenue (Daily)</span>
+            <h2>${{ dailyRevenue() }}</h2>
+        </div>
+    </div>
+
+    <div class="charts-row">
+        <div class="chart-wrapper">
+            <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="'bar'">
+            </canvas>
+        </div>
+
+        <div class="fleet-status">
+            <h3>Fleet Availability</h3>
+            <ul>
+                <li><span class="dot online"></span> On Duty: 85</li>
+                <li><span class="dot busy"></span> In Transit: 42</li>
+                <li><span class="dot offline"></span> Offline: 15</li>
+            </ul>
+        </div>
+    </div>
+</div>
