@@ -1,45 +1,5 @@
-.admin-wrapper {
-    display: flex;
-    height: 100vh;
-    /* background: var(--bg); */
-    font-family: 'Inter', sans-serif;
-}
 
-.sidebar {
-    width: 260px;
-    background: #f8fafc;
-    /* color: white; */
-    padding: 1.5rem;
-}
 
-.sidebar nav button {
-    width: 100%;
-    text-align: left;
-    padding: 12px;
-    background: none;
-    border: none;
-    color: #94a3b8;
-    cursor: pointer;
-    border-radius: 8px;
-    margin-bottom: 5px;
-}
-
-.sidebar nav button.active {
-    background: var(--primary);
-    color: white;
-}
-
-.content {
-    flex: 1;
-    padding: 2rem;
-    overflow-y: auto;
-}
-
-.grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-}
 
 .input-row {
     display: flex;
@@ -80,7 +40,4 @@
     justify-content: center;
     color: #64748b;
     font-style: italic;
-}
-th{
-    font-weight: 500;
 }

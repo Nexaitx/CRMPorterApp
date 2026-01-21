@@ -1,0 +1,131 @@
+<div class="settings-container">
+    <aside class="settings-sidebar">
+        <div class="sidebar-header">
+            <h3>Rider Management</h3>
+            <small>Partner Operations</small>
+        </div>
+        <nav>
+            <button (click)="activeRiderSubModule.set('onboarding')" 
+                    [class.active]="activeRiderSubModule() === 'onboarding'">
+                🆔 Rider Onboarding
+                <span class="badge bg-primary ms-auto" *ngIf="pendingRiders().length > 0">
+                    {{pendingRiders().length}}
+                </span>
+            </button>
+
+            <button (click)="activeRiderSubModule.set('tracking')" 
+                    [class.active]="activeRiderSubModule() === 'tracking'">
+                📍 Live Tracking
+            </button>
+
+            <button (click)="activeRiderSubModule.set('payouts')" 
+                    [class.active]="activeRiderSubModule() === 'payouts'">
+                🏦 Payouts & Wallets
+            </button>
+
+            <button (click)="activeRiderSubModule.set('attendance')" 
+                    [class.active]="activeRiderSubModule() === 'attendance'">
+                🕒 Attendance/Status
+            </button>
+        </nav>
+    </aside>
+
+    <main class="settings-content">
+        <section class="settings-card">
+
+            @if (activeRiderSubModule() === 'onboarding') {
+            <div class="module-view">
+                <h4 class="mb-3">Verification Queue</h4>
+                <div class="row g-3">
+                    @for (rider of pendingRiders(); track rider.id) {
+                    <div class="col-md-6">
+                        <div class="card shadow-sm border-info">
+                            <div class="card-body">
+                                <h6 >{{rider.name}}</h6>
+                                <p class="small text-muted mb-2">Vehicle: {{rider.vehicle}}</p>
+                                <div class="alert alert-secondary py-1 px-2 small">
+                                    {{rider.docs}}
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <button matButton="outlined" class="flex-grow-1">Review Docs</button>
+                                    <button matButton="filled" class="px-3">Approve</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+            }
+
+            @if (activeRiderSubModule() === 'tracking') {
+            <div class="module-view">
+                <h4 class="mb-3">Partner Map View</h4>
+                <div class="bg-light border rounded position-relative" 
+                     style="height: 450px; background: #eee url('https://via.placeholder.com/800x450?text=Live+Map:+Active+Riders') center/cover;">
+                    <div class="position-absolute top-0 end-0 m-3 bg-white p-2 shadow-sm rounded">
+                        <small class="d-block text-success">● 42 Online</small>
+                        <small class="d-block text-danger">● 15 Offline</small>
+                    </div>
+                </div>
+            </div>
+            }
+
+            @if (activeRiderSubModule() === 'payouts') {
+            <div class="module-view">
+                <h4 class="mb-3">Wallet Settlements</h4>
+                <table class="table align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Rider</th>
+                            <th>Current Balance</th>
+                            <th>Total Earnings</th>
+                            <th>Next Payout</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Amit Verma</td>
+                            <td>$142.50</td>
+                            <td>$2,450.00</td>
+                            <td>Jan 25</td>
+                            <td><button matButton>View Ledger</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            }
+
+            @if (activeRiderSubModule() === 'attendance') {
+            <div class="module-view">
+                <h4 class="mb-3">Rider Status Monitor</h4>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search rider name..." 
+                           [ngModel]="searchQuery()" (ngModelChange)="searchQuery.set($event)">
+                </div>
+                <div class="list-group shadow-sm">
+                    @for (r of filteredAttendance(); track r.name) {
+                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <span >{{r.name}}</span>
+                            <small class="text-muted ms-2">Sync: {{r.lastSync}}</small>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <small class="text-muted">🔋 {{r.battery}}</small>
+                            <span class="badge" 
+                                  [class.bg-success]="r.status === 'Online'"
+                                  [class.bg-warning]="r.status === 'In-Transit'"
+                                  [class.bg-secondary]="r.status === 'Offline'">
+                                {{r.status}}
+                            </span>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+            }
+
+        </section>
+    </main>
+</div>

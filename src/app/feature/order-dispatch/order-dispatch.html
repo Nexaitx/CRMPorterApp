@@ -1,0 +1,142 @@
+<div class="settings-container">
+    <aside class="settings-sidebar">
+        <div class="sidebar-header">
+            <h3>Order & Dispatch Management</h3>
+            <small>Logistics Control</small>
+        </div>
+        <nav>
+            <button (click)="activeOrderSubModule.set('live')" [class.active]="activeOrderSubModule() === 'live'">
+                🏙️ Live Bookings
+            </button>
+
+            <button (click)="activeOrderSubModule.set('history')" [class.active]="activeOrderSubModule() === 'history'">
+                💰 Order History
+            </button>
+
+            <button (click)="activeOrderSubModule.set('unassigned')"
+                [class.active]="activeOrderSubModule() === 'unassigned'">
+                ⚠️ Unassigned
+                <span class="badge bg-danger ms-auto" *ngIf="unassignedOrders().length > 0">
+                    {{unassignedOrders().length}}
+                </span>
+            </button>
+
+            <button (click)="activeOrderSubModule.set('console')" [class.active]="activeOrderSubModule() === 'console'">
+                🏦 Dispatch Console
+            </button>
+        </nav>
+    </aside>
+
+    <main class="settings-content">
+        <section class="settings-card">
+
+            @if (activeOrderSubModule() === 'live') {
+            <div class="module-view">
+                <h4 class="mb-3">Live Bookings</h4>
+                <table class="table align-middle shadow-sm rounded">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Rider</th>
+                            <th>Status</th>
+                            <th>ETA</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#PRT-882</td>
+                            <td>Rahul Sharma <span class="text-primary ">(5.0 ★)</span></td>
+                            <td><span class="badge bg-info text-dark">Picked Up</span></td>
+                            <td>12 Mins</td>
+                            <td><button matButton="outlined">Track</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            }
+
+            @if (activeOrderSubModule() === 'history') {
+            <div class="module-view">
+                <h4 class="mb-3">Order History</h4>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search orders..." ([ngModel])="searchQuery"
+                        >
+                    <button matButton="filled">Search</button>
+                </div>
+                <table class="table border">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Customer</th>
+                            <th>Amount</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2026-01-21</td>
+                            <td>Amazon Hub</td>
+                            <td>$45.00</td>
+                            <td><span class="badge bg-success">Delivered</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            }
+
+            @if (activeOrderSubModule() === 'unassigned') {
+            <div class="module-view">
+                <h4 class="mb-3">Unassigned Queue</h4>
+                <div class="row g-3">
+                    @for (order of unassignedOrders(); track order.id) {
+                    <div class="col-md-6">
+                        <div class="card border-warning shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h6 class=" mb-0 text-primary">{{order.id}}</h6>
+                                    <span class="badge bg-danger">{{order.time}}</span>
+                                </div>
+                                <hr>
+                                <p class="mb-1"><strong>Pickup:</strong> {{order.pickup}}</p>
+                                <p class="mb-3"><strong>Vehicle:</strong> {{order.type}}</p>
+                                <button matButton="outlined" class="w-100 "
+                                    (click)="activeOrderSubModule.set('console')">
+                                    Manual Dispatch
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+            }
+
+            @if (activeOrderSubModule() === 'console') {
+            <div class="module-view">
+                <h4 class="mb-3">Dispatch Console</h4>
+                <div class="console-layout d-flex gap-3">
+                    <div class="flex-grow-1 bg-light rounded d-flex align-items-center justify-content-center border"
+                        style="height: 400px; background: #e9ecef url('https://via.placeholder.com/800x400?text=Interactive+Logistics+Map') center/cover;">
+                        <span class="badge text-danger p-2 opacity-75">Interactive Map View</span>
+                    </div>
+                    <div class="rider-sidebar border rounded p-2 bg-white" style="width: 280px;">
+                        <h6 class="border-bottom pb-2">Online Riders</h6>
+                        <div class="list-group list-group-flush overflow-auto" style="max-height: 330px;">
+                            <div class="list-group-item px-1">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <div class=" small">Vikram Singh</div>
+                                        <small class="text-success">● 0.5km away</small>
+                                    </div>
+                                    <button matButton="filled">Assign</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+        </section>
+    </main>
+</div>

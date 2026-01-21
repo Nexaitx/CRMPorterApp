@@ -1,0 +1,23 @@
+.btn-group-sm > .btn {
+  font-size: 0.8rem;
+  padding: 0.4rem 0.8rem;
+}
+
+.live-orders-grid {
+  animation: fadeIn 0.3s ease-in;
+}
+
+.btn-group .btn.active {
+  background-color: #0d6efd;
+  color: white;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.rider-sidebar {
+  max-height: 300px;
+  overflow-y: auto;
+}

@@ -105,10 +105,6 @@ mat-sidenav-content.content-expanded {
     border-right: 2px solid var(--mat-sys-primary);
 }
 
-.content-padding {
-    padding: 24px;
-}
-
 .profile-dropdown {
     min-width: 220px;
 
