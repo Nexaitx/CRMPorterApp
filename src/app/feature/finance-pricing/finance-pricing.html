@@ -1,0 +1,75 @@
+<div class="settings-container">
+    <aside class="settings-sidebar">
+        <div class="sidebar-header">
+            <h3>Finance & Pricing</h3>
+            <small>Revenue Controls</small>
+        </div>
+        <nav>
+            <button (click)="activeFinanceSubModule.set('rate-cards')" [class.active]="activeFinanceSubModule() === 'rate-cards'">
+                📋 Rate Cards
+            </button>
+            <button (click)="activeFinanceSubModule.set('surge')" [class.active]="activeFinanceSubModule() === 'surge'">
+                ⚡ Surge Pricing
+            </button>
+            <button (click)="activeFinanceSubModule.set('promos')" [class.active]="activeFinanceSubModule() === 'promos'">
+                🏷️ Promocodes
+            </button>
+        </nav>
+    </aside>
+
+    <main class="settings-content">
+        <section class="settings-card">
+            @if (activeFinanceSubModule() === 'rate-cards') {
+            <div class="module-view">
+                <h4>Standard Vehicle Rates</h4>
+                <div class="list-group list-group-flush border rounded">
+                    <div class="list-group-item d-flex justify-content-between">
+                        <span>Base Fare (First 2km)</span>
+                        <input type="number" class="form-control w-25" value="50">
+                    </div>
+                    <div class="list-group-item d-flex justify-content-between">
+                        <span>Per KM Charge</span>
+                        <input type="number" class="form-control w-25" value="12">
+                    </div>
+                    <div class="list-group-item d-flex justify-content-between">
+                        <span>Wait Time (Per Min)</span>
+                        <input type="number" class="form-control w-25" value="2">
+                    </div>
+                </div>
+                <button matButton="filled" class=" mt-3 w-100">Update All Vehicle Rates</button>
+            </div>
+            }
+
+            @if (activeFinanceSubModule() === 'surge') {
+            <div class="module-view">
+                <h4>Dynamic Surge Control</h4>
+                <div class="alert alert-warning">
+                    Current City Status: <b>Heavy Rain (Bangalore)</b>
+                </div>
+                <label>Surge Multiplier (x)</label>
+                <input type="range" class="form-range" min="1" max="4" step="0.5" [(ngModel)]="surgeMultiplier">
+                <div class="text-center h3 fw-bold text-primary">{{surgeMultiplier()}}x</div>
+                <button matButton="filled" class="w-100">Activate Surge Now</button>
+            </div>
+            }
+
+            @if (activeFinanceSubModule() === 'promos') {
+            <div class="module-view">
+                <h4>Active Promotions</h4>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="NEW50">
+                    <button matButton="filled">Create Code</button>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr><th>Code</th><th>Discount</th><th>Usage</th><th>Expiry</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>WINTER20</td><td>20% OFF</td><td>452/1000</td><td>Feb 2026</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            }
+        </section>
+    </main>
+</div>

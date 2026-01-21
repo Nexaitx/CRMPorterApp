@@ -1,0 +1,73 @@
+<div class="settings-container">
+    <aside class="settings-sidebar">
+        <div class="sidebar-header">
+            <h3>Client Management</h3>
+            <small>CRM & Accounts</small>
+        </div>
+        <nav>
+            <button (click)="activeClientSubModule.set('individual')" [class.active]="activeClientSubModule() === 'individual'">
+                👤 Individual Customers
+            </button>
+            <button (click)="activeClientSubModule.set('corporate')" [class.active]="activeClientSubModule() === 'corporate'">
+                🏢 Enterprise / Corporate
+            </button>
+            <button (click)="activeClientSubModule.set('credit')" [class.active]="activeClientSubModule() === 'credit'">
+                💳 Credit Management
+            </button>
+        </nav>
+    </aside>
+
+    <main class="settings-content">
+        <section class="settings-card">
+            @if (activeClientSubModule() === 'individual') {
+            <div class="module-view">
+                <h4>Retail Customers</h4>
+                <table class="table align-middle">
+                    <thead>
+                        <tr><th>Name</th><th>Contact</th><th>Open Complaints</th><th>Action</th></tr>
+                    </thead>
+                    <tbody>
+                        @for (c of customers(); track c.name) {
+                        <tr>
+                            <td>{{c.name}}</td>
+                            <td>{{c.phone}}</td>
+                            <td><span [class]="c.complaints > 0 ? 'text-danger fw-bold' : 'text-muted'">{{c.complaints}}</span></td>
+                            <td><button matButton="outlined">View Addresses</button></td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            }
+
+            @if (activeClientSubModule() === 'corporate') {
+            <div class="module-view">
+                <h4>Corporate Accounts</h4>
+                <div class="row g-3">
+                    @for (corp of corporateClients(); track corp.company) {
+                    <div class="col-md-6">
+                        <div class="card p-3 border-start border-4 border-primary">
+                            <h6>{{corp.company}}</h6>
+                            <small>POC: {{corp.poc}} | Billing: {{corp.cycle}}</small>
+                            <div class="mt-2">
+                                <span class="badge" [class.bg-success]="corp.status === 'Active'" [class.bg-danger]="corp.status === 'Overdue'">{{corp.status}}</span>
+                                <button matButton="outlined" class="float-end">Bulk Orders</button>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+            }
+
+            @if (activeClientSubModule() === 'credit') {
+            <div class="module-view text-center py-5">
+                <mat-icon style="font-size: 48px; height: 48px; width: 48px;">receipt_long</mat-icon>
+                <h5>Monthly Billing Dashboard</h5>
+                <p class="text-muted">Total Outstanding Enterprise Credit: <b>$12,450.00</b></p>
+                <button matButton="filled">Generate Monthly Invoices</button>
+            </div>
+            }
+        </section>
+    </main>
+</div>

@@ -31,6 +31,18 @@
                 <span matListItemTitle *ngIf="isExpanded() || isHandset()">Delivery Partner</span>
             </a>
 
+             <a mat-list-item routerLink="/client-management" routerLinkActive="active-link"
+                [matTooltip]="(!isExpanded() && !isHandset()) ? 'Client Management' : ''" matTooltipPosition="right">
+                <mat-icon matListItemIcon><i class="fi fi-rr-target-audience"></i></mat-icon>
+                <span matListItemTitle *ngIf="isExpanded() || isHandset()">Client Management</span>
+            </a>
+
+            <a mat-list-item routerLink="/finance-and-pricing" routerLinkActive="active-link"
+                [matTooltip]="(!isExpanded() && !isHandset()) ? 'Finance & Pricing' : ''" matTooltipPosition="right">
+                <mat-icon matListItemIcon><i class="fi fi-rr-chart-histogram"></i></mat-icon>
+                <span matListItemTitle *ngIf="isExpanded() || isHandset()">Finance & Pricing</span>
+            </a>
+
             <a mat-list-item routerLink="/profile" routerLinkActive="active-link"
                 [matTooltip]="(!isExpanded() && !isHandset()) ? 'Profile' : ''" matTooltipPosition="right">
                 <mat-icon matListItemIcon><i class="fi fi-rr-user-trust"></i></mat-icon>

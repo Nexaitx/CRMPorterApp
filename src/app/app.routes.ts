@@ -62,6 +62,16 @@ export const routes: Routes = [
                 loadComponent: () => import('./feature/rider-management/rider-management').then(m => m.RiderManagement),
                 title: 'Rider / Partner Management'
             },
+            {
+                path: 'client-management',
+                loadComponent: () => import('./feature/client-management/client-management').then(m => m.ClientManagement),
+                title: 'Client Management'
+            },
+            {
+                path: 'finance-and-pricing',
+                loadComponent: () => import('./feature/finance-pricing/finance-pricing').then(m => m.FinancePricing),
+                title: 'Finance & Pricing'
+            },
             // You can add more pages here that share the same sidebar
             // { path: 'profile', loadComponent: ... }
         ]
