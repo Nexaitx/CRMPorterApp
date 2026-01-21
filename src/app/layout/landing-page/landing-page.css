@@ -1,35 +1,46 @@
 .navbar {
-  transition: all 0.3s ease;
-  .navbar-brand {
-    letter-spacing: -0.5px;
-  }
+    transition: all 0.3s ease;
+
+    .navbar-brand {
+        letter-spacing: -0.5px;
+    }
 }
 
 .hero-section {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
 }
 
 .card {
-  transition: transform 0.2s ease-in-out;
-  &:hover {
-    transform: translateY(-5px);
-  }
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+        transform: translateY(-5px);
+    }
 }
 
 .btn-primary {
-  background-color: #fe285f;
-  border-color: #fe285f;
-  &:hover {
-    background-color: #e01e4a;
-    border-color: #e01e4a;
-  }
+    background-color: #fe285f;
+    border-color: #fe285f;
+
+    &:hover {
+        background-color: #e01e4a;
+        border-color: #e01e4a;
+    }
 }
 
 .text-primary {
-  color: #fe285f !important;
+    color: #fe285f !important;
 }
 
 .bg-primary {
-  background-color: #fe285f !important;
+    background-color: #fe285f !important;
+}
+
+.placeholder {
+    background-color: #f9dbe1 !important;
+}
+
+.card-img-top {
+    height: 200px;
 }
